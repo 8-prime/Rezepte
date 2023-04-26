@@ -14,7 +14,7 @@ export class RecipeListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    for (let index = 0; index < 10; index++) {
+    for (let index = 1; index < 11; index++) {
       this.recipeIds.push(index)
     }
 

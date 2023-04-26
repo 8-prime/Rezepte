@@ -1,5 +1,7 @@
 <ul>
-    <li *ngFor="let id of recipeIds">
-        <a routerLink="/recipes/{{id}}" > Recipe with id {{id}}</a>
+    <li *ngFor="let id of recipeIds" class="">
+        <div class="m-6 p-2 rounded-lg bg-gray-800 w-fit">
+            <a class="text-2xl  text-white" routerLink="/recipes/{{id}}" > Recipe with id {{id}}</a>
+        </div>
     </li>
 </ul>
