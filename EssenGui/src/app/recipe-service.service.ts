@@ -7,7 +7,7 @@ import { Recipe } from './recipe';
 })
 export class RecipeServiceService {
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   getRecipebyId(id: number): Recipe{
     const recipeId = id; // Generate a random ID between 0 and 999

@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EssenGui';
+
+  recipeIds: number[] = []
+
+  constructor() { }
+
+  ngOnInit(): void {
+    for (let index = 0; index < 10; index++) {
+      this.recipeIds.push(index)
+    }
+
+  }
 }

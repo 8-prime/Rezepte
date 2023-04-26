@@ -1,15 +1,15 @@
-<h1>{{recipe?.name}}</h1>
+<h1>You are cooking:{{recipe?.name}}</h1>
 
 <h2>For this recipe the following ingredients are needed:</h2>
 <ul>
-    <li *ngFor="let ingredient in recipe.ingredients">
+    <li *ngFor="let ingredient of recipe?.ingredients">
         {{ingredient}}
     </li>
 </ul>
 
 <h2>To cook this recipe you have to do the following steps:</h2>
 <ul>
-    <li *ngFor="let instruction in recipe.instructions">
+    <li *ngFor="let instruction of recipe?.instructions">
         {{instruction}}
     </li>
 </ul>
