@@ -1,15 +1,33 @@
-<h1>You are cooking:{{recipe?.name}}</h1>
+<div class="flex flex-col items-center pb-20 p-5">
+    <div class="flex flex-row flex-wrap justify-center">
+        <div class="flex justify-center items-center w-1/2 p-10">
+            <h1 class="text-7xl text-center font-semibold">{{recipe?.name}}</h1>
+        </div>
+        <div class="w-1/2 min-w-[300px]">
+            <img class="rounded-lg drop-shadow-lg" src="https://generatorfun.com/code/uploads/Random-Food-image-{{recipe?.id}}.jpg" alt="">
+        </div>
+    </div>
+    <div class="flex flex-col items-center pt-10 min-w-[50%]">
+        <div class="flex flex-col w-full">
+            <h2 class="text-5xl text-left font-semibold">Ingredients</h2>
+            <div class="border-b-2 border-black mt-4"></div>
+            <ul>
+                <li class="text-lg m-4 font-bold" *ngFor="let ingredient of recipe?.ingredients">
+                    {{ingredient}}
+                </li>
+            </ul>
+        </div>
+        
+        
+        <div class="flex flex-col w-full">
+            <h2 class="text-5xl text-left font-semibold">Preparation</h2>
+            <div class="border-b-2 border-black mt-4"></div>
+            <ul>
+                <li class="text-lg m-4 font-bold" *ngFor="let instruction of recipe?.instructions">
+                    {{instruction}}
+                </li>
+            </ul>
+        </div>
 
-<h2>For this recipe the following ingredients are needed:</h2>
-<ul>
-    <li *ngFor="let ingredient of recipe?.ingredients">
-        {{ingredient}}
-    </li>
-</ul>
-
-<h2>To cook this recipe you have to do the following steps:</h2>
-<ul>
-    <li *ngFor="let instruction of recipe?.instructions">
-        {{instruction}}
-    </li>
-</ul>
+    </div>
+</div>
