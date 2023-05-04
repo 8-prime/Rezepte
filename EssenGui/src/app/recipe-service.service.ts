@@ -2,12 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { Recipe } from './recipe';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeServiceService {
 
-  constructor() { }
+  mongoPassword: string;
+  mongoUser:string;
+
+  constructor() { 
+    this.mongoPassword = process.env['MONGO_DB_PASSWORD'] ?? "7Ab3N*@N*S%VsrG";
+    this.mongoUser = process.env['MONGO_DB_USER'] ?? "";
+
+  }
+
+  
+  // async getAllRecipes(): Promise<Recipe[]>{
+    
+  // }
+
 
   getRecipebyId(id: number): Recipe{
     const recipeId = id; // Generate a random ID between 0 and 999
