@@ -1,14 +1,14 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const Recipe = require('../models/recipe');
 require('dotenv').config()
 
 // Get all recipes
 exports.getAllRecipes = async (req, res) => {
-    console.log("Hi");
     try {
-        const mongoPassword = process.env['MONGO_DB_PASSWORD'] ?? "";
-        const mongoUser = process.env['MONGO_DB_USER'] ?? "";
-        console.log(mongoPassword);
-        const uri = `mongodb+srv://${mongoUser}:${this.mongoPassword}@recipecluster.gmul1mc.mongodb.net/?retryWrites=true&w=majority`;
+        const mongoPassword = encodeURIComponent(process.env['MONGO_DB_PASSWORD'] ?? "");
+        const mongoUser = encodeURIComponent(process.env['MONGO_DB_USER'] ?? "");
+
+        const uri = `mongodb+srv://${mongoUser}:${mongoPassword}@recipecluster.gmul1mc.mongodb.net/?retryWrites=true&w=majority`;
 
         const client = new MongoClient(uri, {
             serverApi: {
@@ -18,36 +18,19 @@ exports.getAllRecipes = async (req, res) => {
             }
         });
 
-        console.log("client created");
 
-        const db = client.db('recipe');
-
-        console.log("got db");
-
-        const collection = db.collection('recipe');
-
-        console.log("got collection");
+        const db = client.db('recipes');
+        const collection = db.collection('recipes');
 
         const cursor = collection.find();
 
-        console.log("got cursor");
-
         const recipes = await cursor.toArray();
 
-        console.log("got recipes");
+        console.log(recipes);
 
         client.close();
 
-
-        const result = recipes.map(recipeJson => {
-            const recipe = new Recipe();
-            recipe.id = recipeJson._id;
-            recipe.name = recipeJson.name;
-            recipe.ingredients = recipeJson.ingredients;
-            recipe.instructions = recipeJson.instructions;
-            return recipe;
-        });
-        res.status(200).json(result);
+        res.status(200).json(recipes);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server error' });
