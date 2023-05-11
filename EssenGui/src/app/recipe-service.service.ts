@@ -1,26 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { Recipe } from './recipe';
-
+import { Category } from './category';
+import { Observable } from 'rxjs/internal/Observable';
+import { ObjectId } from "mongodb";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeServiceService {
 
-  mongoPassword: string;
-  mongoUser:string;
+  constructor(private http: HttpClient) { }
 
-  constructor() { 
-    this.mongoPassword = process.env['MONGO_DB_PASSWORD'] ?? "7Ab3N*@N*S%VsrG";
-    this.mongoUser = process.env['MONGO_DB_USER'] ?? "";
-
+  getCategories(): Observable<Category[]>{
+      return this.http.get<Category[]>('http://localhost:3000/categories/')
   }
-
-  
-  // async getAllRecipes(): Promise<Recipe[]>{
-    
-  // }
 
 
   getRecipebyId(id: number): Recipe{
@@ -47,6 +41,6 @@ export class RecipeServiceService {
       instructions.push(instruction); // Add the instruction to the recipe's list of instructions
     }
   
-    return new Recipe(recipeId, recipeName, ingredients, instructions);
+    return new Recipe(new ObjectId(recipeId), recipeName, ingredients, instructions, []);
   }
 }
