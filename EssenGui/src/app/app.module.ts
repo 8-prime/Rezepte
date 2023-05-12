@@ -8,13 +8,15 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { CategoryDetailsComponent } from './category-details/category-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeDetailComponent,
     RecipeListComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    CategoryDetailsComponent
   ],
   imports: [
     BrowserModule,

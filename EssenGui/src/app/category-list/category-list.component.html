@@ -1,5 +1,8 @@
 <div>
     <div *ngFor="let category of categories">
-        <h2>{{category.name}}</h2>
+        <a  routerLink="/category/{{category._id}}">
+            <h2>{{category.name}}</h2>
+            <h3>{{category.recipeIds.length}}</h3>
+        </a>
     </div>
 </div>

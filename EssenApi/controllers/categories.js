@@ -39,17 +39,13 @@ exports.getAllCategories = async (req, res) => {
 };
 
 
-exports.getAllRecipesForCategory = async (req, res) => {
-    try{
-        const category = req.params.name;
-
-        console.log(category);
+exports.getCategoryById = async (req, res) => {
+    try {
+        const category = req.params.id;
 
         const mongoPassword = encodeURIComponent(process.env['MONGO_DB_PASSWORD'] ?? "");
         const mongoUser = encodeURIComponent(process.env['MONGO_DB_USER'] ?? "");
-
         const uri = `mongodb+srv://${mongoUser}:${mongoPassword}@recipecluster.gmul1mc.mongodb.net/?retryWrites=true&w=majority`;
-
         const client = new MongoClient(uri, {
             serverApi: {
                 version: ServerApiVersion.v1,
@@ -61,17 +57,18 @@ exports.getAllRecipesForCategory = async (req, res) => {
 
         const db = client.db('recipes');
         const collection = db.collection('categories');
+        const categoryResult = await collection.findOne({_id: new ObjectId(category)});
+        console.log(categoryResult);
 
-        const resultCategory = await collection.findOne({name: category});
+        client.close();
 
-        console.log(resultCategory);
-
-        res.status(200).json(resultCategory);
+        res.status(200).json(categoryResult);
     } catch (err) {
         console.error(err);
-        res.status(500).json({message: 'Server error'});
+        res.status(500).json({ message: 'Server error' });
     }
 };
+
 
 
 exports.addNewCategory = async (req, res) => {
