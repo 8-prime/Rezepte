@@ -3,7 +3,6 @@ import { HttpClient} from '@angular/common/http'
 import { Recipe } from './recipe';
 import { Category } from './category';
 import { Observable } from 'rxjs/internal/Observable';
-import { ObjectId } from "mongodb";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class RecipeServiceService {
   }
 
 
-  getRecipebyId(id: number): Recipe{
+  getRecipebyId(id: string): Recipe{
     const recipeId = id; // Generate a random ID between 0 and 999
     const recipeName = `Random Recipe ${recipeId}`; // Use the ID to create a unique recipe name
   
@@ -41,6 +40,6 @@ export class RecipeServiceService {
       instructions.push(instruction); // Add the instruction to the recipe's list of instructions
     }
   
-    return new Recipe(new ObjectId(recipeId), recipeName, ingredients, instructions, []);
+    return new Recipe(recipeId, recipeName, ingredients, instructions, []);
   }
 }

@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const recipeRoutes = require('./routes/recipes');
 const categoryRoutes = require('./routes/categories');
+const cors = require('cors');
+
+
+app.use(cors());
+
 
 // Parse incoming JSON requests
 app.use(express.json());

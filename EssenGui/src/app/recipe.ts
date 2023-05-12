@@ -1,13 +1,11 @@
-import { ObjectId } from "mongodb";
-
 export class Recipe {
-    _id: ObjectId;
+    _id: string;
     name: string;
     ingredients: string[];
     instructions: string[];
-    categoryIds: ObjectId[];
+    categoryIds: string[];
   
-    constructor(_id: ObjectId, name: string, ingredients: string[], instructions: string[], categoryIds: ObjectId[]) {
+    constructor(_id: string, name: string, ingredients: string[], instructions: string[], categoryIds: string[]) {
       this._id = _id;
       this.name = name;
       this.ingredients = ingredients;
