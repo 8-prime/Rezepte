@@ -106,6 +106,7 @@ exports.getRecipesForCategory = async (req, res) => {
 
 exports.addNewRecipe = async (req, res) => {
     try{
+        console.log("Adding new recipe");
         const newRecipe = req.body;
 
         const mongoPassword = encodeURIComponent(process.env['MONGO_DB_PASSWORD'] ?? "");

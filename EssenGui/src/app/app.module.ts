@@ -9,6 +9,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
+import { RecipeAddComponent } from './recipe-add/recipe-add.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,12 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
     RecipeDetailComponent,
     RecipeListComponent,
     CategoryListComponent,
-    CategoryDetailsComponent
+    CategoryDetailsComponent,
+    RecipeAddComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
