@@ -29,7 +29,9 @@ export class RecipeAddComponent {
   }
 
   onSubmit(): void {
-    this.recipeService.postRecipe(this.recipe).subscribe();
+    this.recipeService.postRecipe(this.recipe).subscribe(_ => {
+      this.recipe = new Recipe('', '', [], [], []);
+    });
     console.log('Submitted recipe:', this.recipe);
   }
 

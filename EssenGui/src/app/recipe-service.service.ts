@@ -15,6 +15,10 @@ export class RecipeServiceService {
     return this.http.get<Category[]>('http://localhost:3000/categories/');
   }
 
+  getRecipes(): Observable<Recipe[]>{
+    return this.http.get<Recipe[]>('http://localhost:3000/recipes/');
+  }
+
   getCategoryById(id: string): Observable<Category>{
     return this.http.get<Category>(`http://localhost:3000/categories/byId/${id}`);
   }

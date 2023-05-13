@@ -56,7 +56,7 @@ exports.getRecipeById = async (req, res) => {
         const db = client.db('recipes');
         const collection = db.collection('recipes');
 
-        const recipe = collection.findOne({_id: new ObjectId(id)});
+        const recipe = await collection.findOne({_id: new ObjectId(id)});
 
         client.close();
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
+import { RecipeServiceService } from '../recipe-service.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -8,16 +9,14 @@ import { Recipe } from '../recipe';
 })
 export class RecipeListComponent implements OnInit {
 
+  recipes: Recipe[] = [];
 
-  recipeIds: number[] = []
-
-  constructor() { }
+  constructor(private recipeService: RecipeServiceService) { }
 
   ngOnInit(): void {
-    for (let index = 1; index < 11; index++) {
-      this.recipeIds.push(index)
-    }
-
+    this.recipeService.getRecipes().subscribe(recipes => {
+      this.recipes = recipes;
+    });
   }
 
 }

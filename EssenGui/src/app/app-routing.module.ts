@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'recipes/:id', component: RecipeDetailComponent},
   {path: 'category/:id', component: CategoryDetailsComponent},
   {path: 'addRecipe', component: RecipeAddComponent},
+  {path: 'allRecipes', component: RecipeListComponent},
   {path: '', component: CategoryListComponent}
 ];
 
