@@ -10,12 +10,14 @@ import { RecipeServiceService } from '../recipe-service.service';
 export class CategoryListComponent implements OnInit {
 
   categories: Category[] = [];
+  loading: boolean = true;
 
   constructor(private recipeService: RecipeServiceService) { }
 
   ngOnInit(): void {
     this.recipeService.getCategories().subscribe(categs => {
       this.categories = categs;
+      this.loading = false;
     })
   }
 

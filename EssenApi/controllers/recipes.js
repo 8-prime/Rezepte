@@ -109,6 +109,8 @@ exports.addNewRecipe = async (req, res) => {
         console.log("Adding new recipe");
         const newRecipe = req.body;
 
+        newRecipe._id = new ObjectId();
+
         const mongoPassword = encodeURIComponent(process.env['MONGO_DB_PASSWORD'] ?? "");
         const mongoUser = encodeURIComponent(process.env['MONGO_DB_USER'] ?? "");
 

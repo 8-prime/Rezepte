@@ -11,14 +11,27 @@ import { RecipeServiceService } from '../recipe-service.service';
 export class RecipeDetailComponent implements OnInit {
 
   recipe?: Recipe;
+  loading: boolean = true;
 
   constructor(private recipeService: RecipeServiceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.recipeService.getRecipebyId(params['id']).subscribe( recipe => {
-        this.recipe = recipe;
-      });
+      this.recipeService.recipes.subscribe(recipes => {
+        recipes.forEach(recipe => {
+          if (recipe._id == params['id']){
+            this.recipe = recipe;
+            this.loading = false;
+          }
+        })
+      })
+      
+      if(!this.recipe){
+        this.recipeService.getRecipebyId(params['id']).subscribe( recipe => {
+          this.recipe = recipe;
+          this.loading = false;
+        });
+      }
     })
   }
 

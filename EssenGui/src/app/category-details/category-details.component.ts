@@ -12,8 +12,11 @@ import { RecipeServiceService } from '../recipe-service.service';
 export class CategoryDetailsComponent {
 
   category: Category = new Category('','',[]);
-
   recipes: Recipe[] = [];
+
+  loadingCat: boolean = true;
+  loadingRec: boolean = true;
+  
 
   constructor(private recipeService: RecipeServiceService, private route: ActivatedRoute) { }
 
@@ -22,10 +25,12 @@ export class CategoryDetailsComponent {
       this.recipeService.getCategoryById(params['id']).subscribe(category => {
         console.log(category);
         this.category = category;
+        this.loadingCat = false;
       });
 
       this.recipeService.getRecipesForCategory(params['id']).subscribe(recipes => {
         this.recipes = recipes;
+        this.loadingRec = false;
       });
     });
   }

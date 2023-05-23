@@ -1,8 +1,10 @@
-<div>
-    <div *ngFor="let category of categories">
-        <a  routerLink="/category/{{category._id}}">
-            <h2>{{category.name}}</h2>
-            <h3>{{category.recipeIds.length}}</h3>
-        </a>
-    </div>
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+
+<div *ngIf="!loading" class="p-4">
+  <div *ngFor="let category of categories" class="mb-4">
+    <a routerLink="/category/{{category._id}}" class="text-blue-500 hover:underline">
+      <h2 class="text-xl font-bold">{{category.name}}</h2>
+      <h3 class="text-gray-600">{{category.recipeIds.length}} Recipes</h3>
+    </a>
+  </div>
 </div>

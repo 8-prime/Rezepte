@@ -9,14 +9,20 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class RecipeServiceService {
 
+
+  categories: Observable<Category[]> = new Observable<Category[]>();
+  recipes: Observable<Recipe[]> = new Observable<Recipe[]>();
+
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<Category[]>{
-    return this.http.get<Category[]>('http://localhost:3000/categories/');
+    this.categories =  this.http.get<Category[]>('http://localhost:3000/categories/');
+    return this.categories;
   }
 
   getRecipes(): Observable<Recipe[]>{
-    return this.http.get<Recipe[]>('http://localhost:3000/recipes/');
+    this.recipes = this.http.get<Recipe[]>('http://localhost:3000/recipes/');
+    return this.recipes;
   }
 
   getCategoryById(id: string): Observable<Category>{

@@ -1,9 +1,11 @@
-<h1>{{category.name}}</h1>
+<h1 class="text-2xl font-bold">{{category.name}}</h1>
 
-<div>
-    <div *ngFor="let recipe of recipes">
-        <a routerLink="/recipes/{{recipe._id}}">
-            <h2>{{recipe.name}}</h2>
-        </a>
-    </div>
+<app-loading-spinner *ngIf="loadingCat || loadingRec"></app-loading-spinner>
+
+<div *ngIf="!loadingCat && !loadingRec" class="p-4">
+  <div *ngFor="let recipe of recipes" class="mb-4">
+    <a routerLink="/recipes/{{recipe._id}}" class="text-blue-500 hover:underline">
+      <h2 class="text-lg font-bold">{{recipe.name}}</h2>
+    </a>
+  </div>
 </div>
