@@ -11,7 +11,7 @@ import { response } from 'express';
 })
 export class RecipeServiceService {
 
-  private recipe: BehaviorSubject<Recipe> = new BehaviorSubject( new Recipe("","",[], [],[]));
+  recipe: BehaviorSubject<Recipe> = new BehaviorSubject( new Recipe("","",[], [],[]));
 
 
   constructor(private http: HttpClient) { }

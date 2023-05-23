@@ -4,7 +4,7 @@
 
 <div *ngIf="!loadingCat && !loadingRec" class="p-4">
   <div *ngFor="let recipe of recipes" class="mb-4">
-    <a routerLink="/recipes/{{recipe._id}}" class="text-blue-500 hover:underline">
+    <a (click)="openRecipe(recipe._id)" class="text-blue-500 hover:cursor-pointer">
       <h2 class="text-lg font-bold">{{recipe.name}}</h2>
     </a>
   </div>

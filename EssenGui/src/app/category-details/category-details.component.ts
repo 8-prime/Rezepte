@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../category';
 import { Recipe } from '../recipe';
 import { RecipeServiceService } from '../recipe-service.service';
@@ -18,7 +18,7 @@ export class CategoryDetailsComponent {
   loadingRec: boolean = true;
   
 
-  constructor(private recipeService: RecipeServiceService, private route: ActivatedRoute) { }
+  constructor(private recipeService: RecipeServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void{
     this.route.params.subscribe(params => {
@@ -33,6 +33,11 @@ export class CategoryDetailsComponent {
         this.loadingRec = false;
       });
     });
+  }
+
+  openRecipe(id: string): void{
+    this.recipeService.recipe.next(this.recipes.find(Recipe => Recipe._id == id) ?? new Recipe("", "",[], [], []));
+    this.router.navigate(['/recipes', id]);
   }
 
 }

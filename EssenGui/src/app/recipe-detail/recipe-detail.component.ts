@@ -16,11 +16,21 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private recipeService: RecipeServiceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.route.params.subscribe(params => {
-      this.recipeService.getRecipebyId(params['id']).subscribe( recipe => {
-        this.recipe = recipe;
-        this.loading = false;
+      this.recipeService.recipe.subscribe(rec => {
+        this.recipe = rec
+
+        if(this.recipe._id != params['id']){
+          this.recipeService.getRecipebyId(params['id']).subscribe( recipe => {
+            this.recipe = recipe;
+            this.loading = false;
+          });
+        }else{
+          this.loading = false;
+        }
       });
+      
     })
   }
 
