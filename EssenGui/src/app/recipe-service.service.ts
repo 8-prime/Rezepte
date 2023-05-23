@@ -3,26 +3,25 @@ import { HttpClient} from '@angular/common/http'
 import { Recipe } from './recipe';
 import { Category } from './category';
 import { Observable } from 'rxjs/internal/Observable';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeServiceService {
 
+  private recipe: BehaviorSubject<Recipe> = new BehaviorSubject( new Recipe("","",[], [],[]));
 
-  categories: Observable<Category[]> = new Observable<Category[]>();
-  recipes: Observable<Recipe[]> = new Observable<Recipe[]>();
 
   constructor(private http: HttpClient) { }
 
-  getCategories(): Observable<Category[]>{
-    this.categories =  this.http.get<Category[]>('http://localhost:3000/categories/');
-    return this.categories;
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>('http://localhost:3000/categories/');
   }
 
   getRecipes(): Observable<Recipe[]>{
-    this.recipes = this.http.get<Recipe[]>('http://localhost:3000/recipes/');
-    return this.recipes;
+    return this.http.get<Recipe[]>('http://localhost:3000/recipes/');
   }
 
   getCategoryById(id: string): Observable<Category>{
