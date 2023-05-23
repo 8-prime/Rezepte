@@ -111,6 +111,10 @@ exports.addNewRecipe = async (req, res) => {
 
         newRecipe._id = new ObjectId();
 
+        for (let index = 0; index < newRecipe.categoryIds.length; index++) {
+            newRecipe.categoryIds[index] = new ObjectId(newRecipe.categoryIds[index]);
+        }
+
         const mongoPassword = encodeURIComponent(process.env['MONGO_DB_PASSWORD'] ?? "");
         const mongoUser = encodeURIComponent(process.env['MONGO_DB_USER'] ?? "");
 

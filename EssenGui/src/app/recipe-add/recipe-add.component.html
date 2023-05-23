@@ -1,5 +1,7 @@
 <!-- recipe-form.component.html -->
-<div class="w-full max-w-lg mx-auto mt-20">
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+
+<div *ngIf="!loading" class="w-full max-w-lg mx-auto mt-20">
   <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" (ngSubmit)="onSubmit()">
     <div class="mb-4">
       <label class="block text-gray-700 font-bold mb-2" for="name">
@@ -7,13 +9,7 @@
       </label>
       <input
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        id="name"
-        name="name"
-        type="text"
-        placeholder="Enter recipe name"
-        [(ngModel)]="recipe.name"
-        required
-      >
+        id="name" name="name" type="text" placeholder="Enter recipe name" [(ngModel)]="recipe.name" required>
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 font-bold mb-2">
@@ -23,25 +19,18 @@
         <div class="flex space-x-2">
           <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            (click)="addIngredient()"
-          >
+            type="button" (click)="addIngredient()">
             Add ingredient
           </button>
         </div>
         <div *ngFor="let ingredient of recipe.ingredients; let i = index; trackBy: trackByFn" class="flex space-x-2">
           <input
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter ingredient name"
-            [ngModelOptions]="{ standalone: true }"
-            [(ngModel)]="recipe.ingredients[i]"
-            required
-          >
+            placeholder="Enter ingredient name" [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="recipe.ingredients[i]" required>
           <button
             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            (click)="removeIngredient(i)"
-          >
+            type="button" (click)="removeIngredient(i)">
             Remove
           </button>
         </div>
@@ -55,37 +44,62 @@
         <div class="flex space-x-2">
           <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            (click)="addInstruction()"
-          >
+            type="button" (click)="addInstruction()">
             Add instruction
           </button>
         </div>
         <div *ngFor="let instruction of recipe.instructions; let i = index; trackBy: trackByFn" class="flex space-x-2">
           <input
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter ingredient name"
-            [ngModelOptions]="{ standalone: true }"
-            [(ngModel)]="recipe.instructions[i]"
-            required
-          >
+            placeholder="Enter ingredient name" [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="recipe.instructions[i]" required>
           <button
             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            (click)="removeInstruction(i)"
-          >
+            type="button" (click)="removeInstruction(i)">
             Remove ingredient
           </button>
         </div>
+
       </div>
     </div>
-    <div class="">
-      <button
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2">
+        Categories
+      </label>
+      <div class="flex flex-col space-y-2">
+        <div class="flex space-x-2">
+          <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Add Recipe
+            type="button" (click)="addCategory()">
+            Add category
           </button>
+        </div>
+        <div *ngFor="let category of recipe.categoryIds; let i = index; trackBy: trackByFn"
+          class="flex space-x-2 justify-evenly">
+          <select [(ngModel)]="recipe.categoryIds[i]" [ngModelOptions]="{standalone: true}" >
+            <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
+          </select>
+          <!-- <select ng-model="recipe.categoryIds[i]" ng-options="category as category.name for category in test track by category._id">
+          </select> -->
+
+          <button
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button" (click)="removeCategory(i)">
+            Remove category
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <div class="flex justify-end">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit">
+        Add Recipe
+      </button>
     </div>
   </form>
+  <button (click)="logData()">
+    Logger
+  </button>
 </div>
