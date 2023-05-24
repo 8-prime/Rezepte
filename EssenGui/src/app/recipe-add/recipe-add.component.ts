@@ -12,25 +12,38 @@ export class RecipeAddComponent {
   recipe: Recipe = new Recipe('', '', [], [], []);
   categories: Category[] = [];
 
-  test: Category[] = [new Category("test", "Hallo", []), new Category("trest1", "Lecker", []), new Category("sdfgsdf", "Muschi", [])];
-  test1: number[] = [1,23324,4,34,5,34,5,345]
-
-  result: Recipe = new Recipe('', '', [], [], []);
+  recipes: Recipe[] = [];
 
 
   loading: boolean = true;
+  loadRecipes: boolean = true;
 
   constructor(private recipeService: RecipeServiceService){}
 
 
   ngOnInit(): void{
     this.loading = true;
+    this.loadRecipes = true;
     this.recipeService.getCategories().subscribe(cats => {
       this.categories = cats;
       this.loading = false;
       console.log(this.categories);
     });
+    this.recipeService.getRecipes().subscribe(recipes => {
+      this.recipes = recipes;
+      this.loadRecipes = false;
+    })
   }
+
+
+  edit(recipe:Recipe){
+    this.recipe = recipe;
+  }
+
+  delete(recipe:Recipe){
+
+  }
+
 
   addIngredient(): void {
     this.recipe.ingredients.push('');
