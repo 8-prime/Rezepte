@@ -11,6 +11,6 @@ router.get('/byId/:id', recipeController.getRecipeById);
 
 router.post('/newRecipe', recipeController.addNewRecipe);
 
-
+router.delete('/:id', recipeController.removeRecipeById);
 
 module.exports = router;

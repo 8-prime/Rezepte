@@ -146,3 +146,34 @@ exports.addNewRecipe = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+exports.removeRecipeById = async (req, res) => {
+    try{
+        console.log("Deleting Recipe");
+        const id = new ObjectId(req.params.id);
+
+        const mongoPassword = encodeURIComponent(process.env['MONGO_DB_PASSWORD'] ?? "");
+        const mongoUser = encodeURIComponent(process.env['MONGO_DB_USER'] ?? "");
+
+        const uri = `mongodb+srv://${mongoUser}:${mongoPassword}@recipecluster.gmul1mc.mongodb.net/?retryWrites=true&w=majority`;
+
+        const client = new MongoClient(uri, {
+            serverApi: {
+                version: ServerApiVersion.v1,
+                strict: true,
+                deprecationErrors: true,
+            }
+        });
+
+
+        const db = client.db('recipes');
+        const collection = db.collection('recipes');
+
+        const result = collection.deleteOne({_id: id});
+
+        res.status(200).json({ message: 'New Category has been removed'});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+};

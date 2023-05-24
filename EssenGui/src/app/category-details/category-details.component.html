@@ -1,11 +1,7 @@
-<h1 class="text-2xl font-bold">{{category.name}}</h1>
 
 <app-loading-spinner *ngIf="loadingCat || loadingRec"></app-loading-spinner>
 
 <div *ngIf="!loadingCat && !loadingRec" class="p-4">
-  <div *ngFor="let recipe of recipes" class="mb-4">
-    <a (click)="openRecipe(recipe._id)" class="text-blue-500 hover:cursor-pointer">
-      <h2 class="text-lg font-bold">{{recipe.name}}</h2>
-    </a>
-  </div>
+  <h1 class="text-2xl font-bold">{{category.name}}</h1>
+  <app-recipe-display [recipes]="recipes"></app-recipe-display>
 </div>

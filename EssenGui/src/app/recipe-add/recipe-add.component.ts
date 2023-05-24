@@ -41,7 +41,11 @@ export class RecipeAddComponent {
   }
 
   delete(recipe:Recipe){
-
+    console.log("Removing Data");
+    
+    this.recipeService.deleteRecipe(recipe._id).subscribe(_ => {
+      this.recipes = this.recipes.filter(obj => obj._id !== recipe._id);
+    });
   }
 
 

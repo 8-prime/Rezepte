@@ -12,6 +12,7 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { RecipeDisplayComponent } from './recipe-display/recipe-display.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     CategoryListComponent,
     CategoryDetailsComponent,
     RecipeAddComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    RecipeDisplayComponent
   ],
   imports: [
     ReactiveFormsModule,

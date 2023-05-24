@@ -41,4 +41,8 @@ export class RecipeServiceService {
   postRecipe(recipe: Recipe): Observable<any>{
     return this.http.post('http://localhost:3000/recipes/newRecipe', recipe);
   }
+
+  deleteRecipe(recipeId: string){
+    return this.http.delete(`http://localhost:3000/recipes/${recipeId}`);
+  }
 }
