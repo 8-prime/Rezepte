@@ -14,6 +14,8 @@ export class RecipeAddComponent {
 
   recipes: Recipe[] = [];
 
+  showModal = false;
+  modalText = "";
 
   loading: boolean = true;
   loadRecipes: boolean = true;
@@ -36,8 +38,27 @@ export class RecipeAddComponent {
   }
 
 
+  // Function to open the modal
+  openModal(): void {
+    this.showModal = true;
+  }
+
+  // Function to close the modal
+  closeModal(): void {
+    this.showModal = false;
+    this.recipe = new Recipe("","",[],[],[]);
+  }
+
+  add(){
+    this.modalText = "Add";
+    this.showModal = true;
+  }
+
+
   edit(recipe:Recipe){
     this.recipe = recipe;
+    this.modalText = "Edit";
+    this.openModal();
   }
 
   delete(recipe:Recipe){
@@ -48,47 +69,4 @@ export class RecipeAddComponent {
     });
   }
 
-
-  addIngredient(): void {
-    this.recipe.ingredients.push('');
-  }
-
-  removeIngredient(index: number): void {
-    this.recipe.ingredients.splice(index, 1);
-  }
-  
-  addInstruction(): void {
-    this.recipe.instructions.push('');
-  }
-
-  removeInstruction(index: number): void {
-    this.recipe.instructions.splice(index, 1);
-  }
-
-  addCategory(): void{
-    this.recipe.categoryIds.push('');
-  }
-
-  removeCategory(index: number): void {
-    this.recipe.categoryIds.splice(index, 1);
-  }
-
-  onSubmit(): void {
-    this.recipeService.postRecipe(this.recipe).subscribe(_ => {
-      this.recipe = new Recipe('', '', [], [], []);
-    });
-    console.log('Submitted recipe:', this.recipe);
-  }
-
-
-  trackByFn(index: number, item: string): number{
-    return index;
-  }
-
-
-  logData(){
-    console.log(this.recipe);
-    
-    
-  }
 }

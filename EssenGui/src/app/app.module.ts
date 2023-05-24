@@ -13,6 +13,7 @@ import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { RecipeDisplayComponent } from './recipe-display/recipe-display.component';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RecipeDisplayComponent } from './recipe-display/recipe-display.componen
     CategoryDetailsComponent,
     RecipeAddComponent,
     LoadingSpinnerComponent,
-    RecipeDisplayComponent
+    RecipeDisplayComponent,
+    EditDialogComponent
   ],
   imports: [
     ReactiveFormsModule,

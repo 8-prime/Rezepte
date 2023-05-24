@@ -1,0 +1,112 @@
+<div class="fixed z-10 inset-0 overflow-y-auto p-10">
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="fixed inset-0 transition-opacity">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all">
+            <!-- Modal content -->
+            <div class="p-4">
+                <!-- Your modal content here -->
+                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-fit min-w-[300px]" (ngSubmit)="onSubmit()">
+                    <div class="mb-4">
+                      <label class="block text-gray-700 font-bold mb-2" for="name">
+                        Recipe Name
+                      </label>
+                      <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="name" name="name" type="text" placeholder="Enter recipe name" [(ngModel)]="recipe.name" required>
+                    </div>
+                    <div class="mb-4">
+                      <label class="block text-gray-700 font-bold mb-2">
+                        Ingredients
+                      </label>
+                      <div class="flex flex-col space-y-2">
+                        <div class="flex space-x-2">
+                          <button
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button" (click)="addIngredient()">
+                            Add ingredient
+                          </button>
+                        </div>
+                        <div *ngFor="let ingredient of recipe.ingredients; let i = index; trackBy: trackByFn" class="flex space-x-2">
+                          <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Enter ingredient name" [ngModelOptions]="{ standalone: true }"
+                            [(ngModel)]="recipe.ingredients[i]" required>
+                          <button
+                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button" (click)="removeIngredient(i)">
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <label class="block text-gray-700 font-bold mb-2">
+                        Instructions
+                      </label>
+                      <div class="flex flex-col space-y-2">
+                        <div class="flex space-x-2">
+                          <button
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button" (click)="addInstruction()">
+                            Add instruction
+                          </button>
+                        </div>
+                        <div *ngFor="let instruction of recipe.instructions; let i = index; trackBy: trackByFn" class="flex space-x-2">
+                          <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Enter ingredient name" [ngModelOptions]="{ standalone: true }"
+                            [(ngModel)]="recipe.instructions[i]" required>
+                          <button
+                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button" (click)="removeInstruction(i)">
+                            Remove ingredient
+                          </button>
+                        </div>
+                
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <label class="block text-gray-700 font-bold mb-2">
+                        Categories
+                      </label>
+                      <div class="flex flex-col space-y-2">
+                        <div class="flex space-x-2">
+                          <button
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button" (click)="addCategory()">
+                            Add category
+                          </button>
+                        </div>
+                        <div *ngFor="let category of recipe.categoryIds; let i = index; trackBy: trackByFn"
+                          class="flex space-x-2 justify-evenly">
+                          <select [(ngModel)]="recipe.categoryIds[i]" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
+                          </select>
+                          <!-- <select ng-model="recipe.categoryIds[i]" ng-options="category as category.name for category in test track by category._id">
+                          </select> -->
+                
+                          <button
+                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button" (click)="removeCategory(i)">
+                            Remove category
+                          </button>
+                        </div>
+                
+                      </div>
+                    </div>
+                    <div class="flex justify-end">
+                      <button
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit">
+                        {{actionButtonText}}
+                      </button>
+                    </div>
+                  </form>
+                <!-- Close button -->
+                <button class="mt-4 px-4 py-2 bg-gray-500 text-white rounded-lg" (click)="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
