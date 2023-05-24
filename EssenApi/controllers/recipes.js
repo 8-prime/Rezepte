@@ -131,8 +131,14 @@ exports.addNewRecipe = async (req, res) => {
 
         const db = client.db('recipes');
         const collection = db.collection('recipes');
+        const cats = db.collection('categories');
 
         const result = collection.insertOne(newRecipe);
+
+        cats.updateMany(
+            { _id: { $in: newRecipe.categoryIds } }, 
+            { $addToSet: { recipeIds:  newRecipe._id} }
+        );
 
         res.status(200).json({ message: 'New Category has been added'});
     } catch (err) {
