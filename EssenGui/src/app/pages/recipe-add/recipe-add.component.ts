@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../category';
-import { Recipe } from '../recipe';
-import { RecipeServiceService } from '../recipe-service.service';
+import { Category } from 'src/app/classes/category';
+import { Recipe } from 'src/app/classes/recipe';
+import { RecipeServiceService } from 'src/app/services/recipe-service.service';
 
 @Component({
   selector: 'app-recipe-add',

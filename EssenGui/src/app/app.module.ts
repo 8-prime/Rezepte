@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { CategoryListComponent } from './category-list/category-list.component';
-
 import { HttpClientModule } from '@angular/common/http';
-import { CategoryDetailsComponent } from './category-details/category-details.component';
-import { RecipeAddComponent } from './recipe-add/recipe-add.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { RecipeDisplayComponent } from './recipe-display/recipe-display.component';
-import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { RecipeDetailComponent } from './pages/recipe-detail/recipe-detail.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
+import { CategoryListComponent } from './pages/category-list/category-list.component';
+import { CategoryDetailsComponent } from './pages/category-details/category-details.component';
+import { RecipeAddComponent } from './pages/recipe-add/recipe-add.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { RecipeDisplayComponent } from './pages/recipe-display/recipe-display.component';
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
+import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
+import { EditButtonComponent } from './components/edit-button/edit-button.component';
+import { TextButtonComponent } from './components/text-button/text-button.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
     RecipeAddComponent,
     LoadingSpinnerComponent,
     RecipeDisplayComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    DeleteButtonComponent,
+    EditButtonComponent,
+    TextButtonComponent
   ],
   imports: [
     ReactiveFormsModule,

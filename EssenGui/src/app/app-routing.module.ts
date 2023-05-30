@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryDetailsComponent } from './category-details/category-details.component';
-import { CategoryListComponent } from './category-list/category-list.component';
-import { RecipeAddComponent } from './recipe-add/recipe-add.component';
-import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { CategoryDetailsComponent } from './pages/category-details/category-details.component';
+import { CategoryListComponent } from './pages/category-list/category-list.component';
+import { RecipeAddComponent } from './pages/recipe-add/recipe-add.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
+import { RecipeDetailComponent } from './pages/recipe-detail/recipe-detail.component';
 
 const routes: Routes = [
   {path: 'recipes/:id', component: RecipeDetailComponent},

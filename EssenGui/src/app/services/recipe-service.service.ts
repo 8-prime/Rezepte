@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
-import { Recipe } from './recipe';
-import { Category } from './category';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { response } from 'express';
+import { Category } from '../classes/category';
+import { Recipe } from '../classes/recipe';
 
 @Injectable({
   providedIn: 'root'
