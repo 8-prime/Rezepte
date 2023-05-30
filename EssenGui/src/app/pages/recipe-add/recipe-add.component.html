@@ -1,8 +1,16 @@
 <!-- recipe-form.component.html -->
-<app-loading-spinner *ngIf="loading || loadRecipes"></app-loading-spinner>
-<div *ngIf="!loading && !loadRecipes" class="w-full mt-20 flex flex-col items-center gap-8">
+<div *ngIf="!loggedIn" class="mt-24 flex flex-col gap-8 justify-center items-center overflow-hidden">
+  <input
+    class="shadow appearance-none border rounded w-3/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    placeholder="Enter instruction" [ngModelOptions]="{ standalone: true }"
+    [(ngModel)]="password" required>
+  <button (click)="login()" class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2">Login</button>
+</div>
+<app-loading-spinner *ngIf="(loading || loadRecipes) && loggedIn"></app-loading-spinner>
+<div *ngIf="!loading && !loadRecipes && loggedIn" class="w-full mt-20 flex flex-col items-center gap-8">
   <div>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="add()">
+    <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+      (click)="add()">
       Add new recipe
     </button>
   </div>
@@ -16,18 +24,38 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let recipe of recipes">
-        <td>{{recipe.name}}</td>
-        <td>{{recipe.ingredients.length}} Ingredients</td>
-        <td>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="edit(recipe)">Edit</button>
+      <tr *ngFor="let recipe of recipes; let i = index" 
+          [ngClass]="{'bg-white': i % 2 == 0, 'bg-neutral-200': i % 2 == 1}" class="py-2 border-b-neutral-500 border-solid">
+        <td class="px-5">{{recipe.name}}</td>
+        <td class="px-5">{{recipe.ingredients.length}} Ingredients</td>
+        <td class="px-5">
+          <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+            (click)="edit(recipe)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+              <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+            </svg>
+            Edit
+          </button>
         </td>
-        <td>
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="delete(recipe)">Delete</button>
+        <td class="px-5">
+          <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+            (click)="delete(recipe)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              <line x1="10" y1="11" x2="10" y2="17"></line>
+              <line x1="14" y1="11" x2="14" y2="17"></line>
+            </svg>
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
-  <app-edit-dialog *ngIf="showModal" [recipe]="recipe" [actionButtonText]="modalText" (closeModalEvent)="closeModal()"></app-edit-dialog>
-  
+  <app-edit-dialog *ngIf="showModal" [recipe]="recipe" [actionButtonText]="modalText" (closeModalEvent)="closeModal()">
+  </app-edit-dialog>
+
 </div>

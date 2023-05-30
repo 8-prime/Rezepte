@@ -19,6 +19,9 @@ export class RecipeAddComponent {
 
   loading: boolean = true;
   loadRecipes: boolean = true;
+  loggedIn: boolean = false;
+
+  password: string = '';
 
   constructor(private recipeService: RecipeServiceService){}
 
@@ -37,6 +40,11 @@ export class RecipeAddComponent {
     })
   }
 
+  login(): void {
+    if(this.password == 'test'){
+      this.loggedIn = true;
+    }
+  }
 
   // Function to open the modal
   openModal(): void {
