@@ -15,6 +15,10 @@ app.use(express.json());
 app.use('/recipes', recipeRoutes);
 app.use('/categories', categoryRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 // Start the server
 app.listen(3000, () => {
   console.log('Server is listening on port 3000');
