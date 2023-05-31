@@ -13,36 +13,37 @@ export class RecipeServiceService {
 
   recipe: BehaviorSubject<Recipe> = new BehaviorSubject( new Recipe("","",[], [],[]));
 
+  baseUrl: string = 'https://rezepteexpress.onrender.com';
 
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>('http://localhost:3000/categories/');
+    return this.http.get<Category[]>(`${this.baseUrl}/categories/`);
   }
 
   getRecipes(): Observable<Recipe[]>{
-    return this.http.get<Recipe[]>('http://localhost:3000/recipes/');
+    return this.http.get<Recipe[]>(`${this.baseUrl}/recipes/`);
   }
 
   getCategoryById(id: string): Observable<Category>{
-    return this.http.get<Category>(`http://localhost:3000/categories/byId/${id}`);
+    return this.http.get<Category>(`${this.baseUrl}/categories/byId/${id}`);
   }
 
 
   getRecipesForCategory(id: string): Observable<Recipe[]>{
-    return this.http.get<Recipe[]>(`http://localhost:3000/recipes/byCategory/${id}`);
+    return this.http.get<Recipe[]>(`${this.baseUrl}/recipes/byCategory/${id}`);
   }
 
   getRecipebyId(id: string): Observable<Recipe>{
-    return this.http.get<Recipe>(`http://localhost:3000/recipes/byId/${id}`);
+    return this.http.get<Recipe>(`${this.baseUrl}/recipes/byId/${id}`);
   }
 
 
   postRecipe(recipe: Recipe): Observable<any>{
-    return this.http.post('http://localhost:3000/recipes/newRecipe', recipe);
+    return this.http.post(`${this.baseUrl}/recipes/newRecipe`, recipe);
   }
 
   deleteRecipe(recipeId: string){
-    return this.http.delete(`http://localhost:3000/recipes/${recipeId}`);
+    return this.http.delete(`${this.baseUrl}/recipes/${recipeId}`);
   }
 }
