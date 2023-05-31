@@ -1,7 +1,2 @@
 <!-- <app-loading-spinner *ngIf="loading"></app-loading-spinner> -->
-<div *ngIf="loading">
-    <div *ngFor="let _ of [].constructor(5)" class="p-4">
-        <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '44px'}"></ngx-skeleton-loader>
-    </div>
-</div>
-<app-recipe-display *ngIf="!loading" [recipes]="recipes"></app-recipe-display>
+<app-recipe-display [loading]="loading" [recipes]="recipes"></app-recipe-display>

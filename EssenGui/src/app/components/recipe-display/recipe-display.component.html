@@ -1,4 +1,10 @@
-<ul class="divide-y divide-gray-200">
+<!-- <app-loading-spinner *ngIf="loading"></app-loading-spinner> -->
+<div *ngIf="loading">
+    <div *ngFor="let _ of [].constructor(5)" class="p-4">
+        <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '44px'}"></ngx-skeleton-loader>
+    </div>
+</div>
+<ul *ngIf="!loading" class="divide-y divide-gray-200">
     <li *ngFor="let recipe of recipes" class="p-4 ">
         <a (click)="openRecipe(recipe._id)" class="block hover:bg-neutral-300 hover:cursor-pointer rounded-2xl p-2">
             <div class="flex items-center justify-between px-4">

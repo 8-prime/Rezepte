@@ -1,7 +1,5 @@
-
-<app-loading-spinner *ngIf="loadingCat || loadingRec"></app-loading-spinner>
-
-<div *ngIf="!loadingCat && !loadingRec" class="p-4">
-  <h1 class="text-2xl font-bold">{{category.name}}</h1>
-  <app-recipe-display [recipes]="recipes"></app-recipe-display>
+<div class="p-4">
+  <ngx-skeleton-loader *ngIf="loadingCat" count="1" appearance="line" [theme]="{height: '40px', width: '200px'}"></ngx-skeleton-loader>
+  <h1 *ngIf="!loadingCat" class="text-2xl font-bold">{{category.name}}</h1>
+  <app-recipe-display [loading]="loadingRec" [recipes]="recipes"></app-recipe-display>
 </div>

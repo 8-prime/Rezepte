@@ -11,7 +11,7 @@ import { RecipeServiceService } from 'src/app/services/recipe-service.service';
 export class RecipeDisplayComponent {
 
   @Input() recipes: Recipe[] = [];
-
+  @Input() loading: boolean = true;
 
   constructor(private recipeService: RecipeServiceService, private router: Router) { }
 
