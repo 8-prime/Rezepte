@@ -19,6 +19,7 @@ exports.getAllRecipes = async (req, res) => {
             }
         });
 
+        console.log('Connection to db succesfull');
 
         const db = client.db('recipes');
         const collection = db.collection('recipes');
