@@ -58,7 +58,7 @@ export class RecipeAddComponent {
   }
 
   add(){
-    this.modalText = "Add";
+    this.modalText = "Add recipe";
     this.showModal = true;
   }
 

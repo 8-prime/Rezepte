@@ -2,28 +2,39 @@
 <div *ngIf="!loggedIn" class="mt-24 flex flex-col gap-8 justify-center items-center overflow-hidden">
   <input
     class="shadow appearance-none border rounded w-3/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-    placeholder="Enter instruction" [ngModelOptions]="{ standalone: true }"
+    placeholder="Enter Password" [ngModelOptions]="{ standalone: true }"
     [(ngModel)]="password" required>
   <button (click)="login()" class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2">Login</button>
 </div>
-<app-loading-spinner *ngIf="(loading || loadRecipes) && loggedIn"></app-loading-spinner>
-<div *ngIf="!loading && !loadRecipes && loggedIn" class="w-full mt-20 flex flex-col items-center gap-8">
+
+
+<!-- <app-loading-spinner *ngIf="(loading || loadRecipes) && loggedIn"></app-loading-spinner> -->
+
+
+<div *ngIf="loggedIn" class="w-full mt-20 flex flex-col items-center gap-8">
   <div>
     <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
       (click)="add()">
       Add new recipe
     </button>
   </div>
-  <table class="w-fit m-10 min-w-[300px]">
+  <table class="w-fit m-10 min-w-[300px] overflow-scroll">
     <thead>
       <tr>
-        <th>Recipe Name</th>
-        <th>Ingredients</th>
-        <th></th>
-        <th></th>
+        <th class="mx-4 min-w-[200px]">Recipe Name</th>
+        <th class="mx-4 min-w-[200px]">Ingredients</th>
+        <th class="mx-4 min-w-[100px]"></th>
+        <th class="mx-4 min-w-[100px]"></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="(loading || loadRecipes) && loggedIn">
+      <tr *ngFor="let _ of [].constructor(5)" class="p-4">
+        <td colspan="4">
+          <ngx-skeleton-loader count="1" appearance="line" [theme]="{'border-radius': '5px', 'height': '30px'}"></ngx-skeleton-loader>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="!loading && !loadRecipes && loggedIn">
       <tr *ngFor="let recipe of recipes; let i = index" 
           [ngClass]="{'bg-white': i % 2 == 0, 'bg-neutral-200': i % 2 == 1}" class="py-2 border-b-neutral-500 border-solid">
         <td class="px-5">{{recipe.name}}</td>

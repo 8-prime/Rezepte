@@ -1,4 +1,8 @@
-<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+<div *ngIf="loading" class="flex flex-row flex-wrap gap-3 px-4 justify-center md:justify-start">
+  <div *ngFor="let _ of [].constructor(5)" class="py-4">
+      <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '150px', width: '200px'}"></ngx-skeleton-loader>
+  </div>
+</div>
 
 <div *ngIf="!loading" class="p-4  flex flex-row flex-wrap gap-3 justify-center md:justify-start">
   <div *ngFor="let category of categories" class="mb-4 shadow-xl p-4 rounded-lg min-w-[200px] min-h-[150px] border-solid border-black border-0 hover:border-2">

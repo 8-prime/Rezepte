@@ -16,6 +16,7 @@ import { EditButtonComponent } from './components/edit-button/edit-button.compon
 import { TextButtonComponent } from './components/text-button/text-button.component';
 import { RecipeListComponent } from './pages/recipe-list/recipe-list.component';
 import { RecipeDisplayComponent } from './components/recipe-display/recipe-display.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -39,7 +40,8 @@ import { RecipeDisplayComponent } from './components/recipe-display/recipe-displ
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSkeletonLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
