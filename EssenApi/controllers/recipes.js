@@ -22,12 +22,24 @@ exports.getAllRecipes = async (req, res) => {
         console.log('Connection to db succesfull');
 
         const db = client.db('recipes');
+
+        console.log('get database');
+
         const collection = db.collection('recipes');
+
+        console.log('get collection');
 
         const cursor = collection.find();
 
+        console.log('get cursor');
+
         const recipes = await cursor.toArray();
+
+        console.log('got recipes');
+
         client.close();
+
+        console.log('closed connection');
 
         res.status(200).json(recipes);
     } catch (err) {
