@@ -1,9 +1,9 @@
 <app-loading-spinner *ngIf="loading"></app-loading-spinner>
 
-<div *ngIf="!loading" class="p-4">
-  <div *ngFor="let category of categories" class="mb-4">
-    <a routerLink="/category/{{category._id}}" class="text-blue-500 hover:underline">
-      <h2 class="text-xl font-bold">{{category.name}}</h2>
+<div *ngIf="!loading" class="p-4  flex flex-row flex-wrap gap-3 justify-center md:justify-start">
+  <div *ngFor="let category of categories" class="mb-4 shadow-xl p-4 rounded-lg min-w-[200px] min-h-[150px] border-solid border-black border-0 hover:border-2">
+    <a routerLink="/category/{{category._id}}" class="text-black hover:text-neutral-800 w-full h-full flex flex-col justify-center items-center">
+      <h2 class="text-xl font-bold ">{{category.name}}</h2>
       <h3 class="text-gray-600">{{category.recipeIds.length}} Recipes</h3>
     </a>
   </div>
