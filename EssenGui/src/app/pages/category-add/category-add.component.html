@@ -66,7 +66,7 @@
             </tr>
         </tbody>
     </table>
-    <app-category-edit-dialog *ngIf="showModal" [actionButtonText]="actionButtonText" [category]="category" (closeModalEvent)="closeModal()"></app-category-edit-dialog>
+    <app-category-edit-dialog *ngIf="showModal" [actionButtonText]="actionButtonText" [category]="category" (closeModalEvent)="closeModal($event)"></app-category-edit-dialog>
 </div>
 <!-- 
 <div *ngIf="loggedIn" class="w-full mt-20 flex flex-col items-center gap-8">

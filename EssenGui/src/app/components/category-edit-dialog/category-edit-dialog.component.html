@@ -14,8 +14,7 @@
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="name" name="name" type="text" placeholder="Enter recipe name" [(ngModel)]="category.name" required>
             <div class="flex justify-end">
-                <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
-                    type="submit">
+                <button (click)="submit()" class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2">
                     {{actionButtonText}}
                 </button>
             </div>

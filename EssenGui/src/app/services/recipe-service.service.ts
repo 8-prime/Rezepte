@@ -43,6 +43,10 @@ export class RecipeServiceService {
     return this.http.post(`${this.baseUrl}/recipes/newRecipe`, recipe);
   }
 
+  postCategory(category: Category): Observable<any>{
+    return this.http.post(`${this.baseUrl}/categories/newCategory`, category);
+  }
+
   deleteRecipe(recipeId: string){
     return this.http.delete(`${this.baseUrl}/recipes/${recipeId}`);
   }

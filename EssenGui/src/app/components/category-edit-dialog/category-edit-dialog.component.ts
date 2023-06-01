@@ -11,13 +11,24 @@ export class CategoryEditDialogComponent {
 
   @Input() actionButtonText: string = "";
   @Input() category: Category = new Category("","",[]);
-  @Output() closeModalEvent = new EventEmitter<void>();
+  @Input() isNew: boolean = true;
+  @Output() closeModalEvent = new EventEmitter<boolean>();
 
   constructor(private recipeService: RecipeServiceService){}
 
-  closeModal(): void {
+  closeModal(result: boolean = false): void {
     // Perform any necessary actions when closing the modal
-    this.closeModalEvent.emit();
+    this.closeModalEvent.emit(result);
     console.log('Modal closed');
+  }
+
+  submit(): void{
+    if (this.isNew){
+      this.recipeService.postCategory(this.category).subscribe();
+      this.closeModal(true)
+    }
+    else{
+
+    }
   }
 }

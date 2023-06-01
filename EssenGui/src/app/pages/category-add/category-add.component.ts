@@ -45,11 +45,17 @@ export class CategoryAddComponent {
   }
 
   delete(category: Category){
-
   }
 
-  closeModal(){
+  closeModal(result: boolean){
     this.showModal = false;
     this.category = new Category("","",[]);
+    if(result){
+      this.loading = true;
+      this.recipeService.getCategories().subscribe(result => {
+        this.categories = result;
+        this.loading = false;
+      });
+    }
   }
 }
