@@ -46,4 +46,10 @@ export class RecipeServiceService {
   deleteRecipe(recipeId: string){
     return this.http.delete(`${this.baseUrl}/recipes/${recipeId}`);
   }
+
+  login(password: string): boolean{
+    console.log(password == 'demboys');
+    
+    return password == 'demboys';
+  }
 }

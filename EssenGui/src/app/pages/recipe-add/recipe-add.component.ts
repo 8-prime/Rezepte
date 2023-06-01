@@ -41,9 +41,7 @@ export class RecipeAddComponent {
   }
 
   login(): void {
-    if(this.password == 'test'){
-      this.loggedIn = true;
-    }
+    this.loggedIn = this.recipeService.login(this.password);
   }
 
   // Function to open the modal
@@ -52,9 +50,17 @@ export class RecipeAddComponent {
   }
 
   // Function to close the modal
-  closeModal(): void {
+  closeModal(result: boolean): void {
     this.showModal = false;
     this.recipe = new Recipe("","",[],[],[]);
+
+    if(result){
+      this.loadRecipes = true;
+      this.recipeService.getRecipes().subscribe(recipes => {
+        this.recipes = recipes;
+        this.loadRecipes = false;
+      })
+    }
   }
 
   add(){

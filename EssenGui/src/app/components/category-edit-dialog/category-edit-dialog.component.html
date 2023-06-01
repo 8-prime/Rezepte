@@ -1,0 +1,28 @@
+<div class="fixed z-10 h-screen p-20 inset-0 bg-transparent ">
+    <!-- background -->
+    <div class="fixed inset-0 transition-opacity">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+
+    <div
+        class="h-full flex flex-col gap-4 justify-end items-center flex-wrap bg-white rounded-lg transform transition-all p-10">
+        <div class="flex flex-col justify-center items-center grow gap-4">
+            <label class="block text-gray-700 font-bold mb-2" for="name">
+                Category Name
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name" name="name" type="text" placeholder="Enter recipe name" [(ngModel)]="category.name" required>
+            <div class="flex justify-end">
+                <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+                    type="submit">
+                    {{actionButtonText}}
+                </button>
+            </div>
+        </div>
+        <div class="w-full flex justify-end items-end">
+            <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+              (click)="closeModal()">Close</button>
+          </div>
+    </div>
+</div>

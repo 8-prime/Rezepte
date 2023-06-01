@@ -17,6 +17,8 @@ import { TextButtonComponent } from './components/text-button/text-button.compon
 import { RecipeListComponent } from './pages/recipe-list/recipe-list.component';
 import { RecipeDisplayComponent } from './components/recipe-display/recipe-display.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { CategoryAddComponent } from './pages/category-add/category-add.component';
+import { CategoryEditDialogComponent } from './components/category-edit-dialog/category-edit-dialog.component';
 
 
 
@@ -33,7 +35,9 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     EditDialogComponent,
     DeleteButtonComponent,
     EditButtonComponent,
-    TextButtonComponent
+    TextButtonComponent,
+    CategoryAddComponent,
+    CategoryEditDialogComponent
   ],
   imports: [
     ReactiveFormsModule,

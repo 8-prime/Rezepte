@@ -12,7 +12,9 @@ export class EditDialogComponent {
 
   @Input() actionButtonText: string = "";
   @Input() recipe: Recipe = new Recipe("","",[],[],[]);
-  @Output() closeModalEvent = new EventEmitter<void>();
+  @Input() isNew: boolean = true;
+  @Output() closeModalEvent = new EventEmitter<boolean>();
+
 
   loading: boolean = true;
   categories: Category[] = [];
@@ -27,9 +29,9 @@ export class EditDialogComponent {
   }
 
 
-  closeModal(): void {
+  closeModal(result: boolean = false): void {
     // Perform any necessary actions when closing the modal
-    this.closeModalEvent.emit();
+    this.closeModalEvent.emit(result);
     console.log('Modal closed');
   }
 
@@ -62,10 +64,15 @@ export class EditDialogComponent {
   }
 
   onSubmit(): void {
-    this.recipeService.postRecipe(this.recipe).subscribe(_ => {
-      this.recipe = new Recipe('', '', [], [], []);
-    });
-    console.log('Submitted recipe:', this.recipe);
+    if(this.isNew){
+      this.recipeService.postRecipe(this.recipe).subscribe(_ => {
+        this.closeModal(true);
+      });
+      console.log('Submitted recipe:', this.recipe);
+    }
+    else{
+      
+    }
   }
 
 
