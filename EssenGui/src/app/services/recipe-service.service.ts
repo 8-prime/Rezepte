@@ -13,8 +13,8 @@ export class RecipeServiceService {
 
   recipe: BehaviorSubject<Recipe> = new BehaviorSubject( new Recipe("","",[], [],[]));
 
-  baseUrl: string = 'http://localhost:3000';
-  // baseUrl: string = 'https://rezepteexpress.onrender.com';
+  // baseUrl: string = 'http://localhost:3000';
+  baseUrl: string = 'https://rezepteexpress.onrender.com';
 
   constructor(private http: HttpClient) { }
 
