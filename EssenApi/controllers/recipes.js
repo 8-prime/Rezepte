@@ -184,6 +184,18 @@ exports.removeRecipeById = async (req, res) => {
 
         const result = collection.deleteOne({_id: id});
 
+        const cats = db.collection('categories')
+        cats.updateMany(
+            {recipeIds: { $in: [id] }},
+            {$pull: {recipeIds: id}},
+            (err, res) => {
+                if (err){
+                    console.error('Error removing id from associated Categories', err);
+                }
+            }
+        );
+
+
         res.status(200).json({ message: 'New Category has been removed'});
     } catch (err) {
         console.error(err);

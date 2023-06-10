@@ -1,6 +1,7 @@
 <!-- recipe-form.component.html -->
 <div *ngIf="!loggedIn" class="mt-24 flex flex-col gap-8 justify-center items-center overflow-hidden">
   <input
+    type="password"
     class="shadow appearance-none border rounded w-3/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     placeholder="Enter Password" [ngModelOptions]="{ standalone: true }"
     [(ngModel)]="password" required>

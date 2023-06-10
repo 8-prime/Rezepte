@@ -74,6 +74,7 @@ exports.getCategoryById = async (req, res) => {
 exports.addNewCategory = async (req, res) => {
     try{
         const newCategory = req.body;
+        newCategory._id = new ObjectId();
 
         const mongoPassword = encodeURIComponent(process.env['MONGO_DB_PASSWORD'] ?? "");
         const mongoUser = encodeURIComponent(process.env['MONGO_DB_USER'] ?? "");
