@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const recipeRoutes = require('./routes/recipes');
 const categoryRoutes = require('./routes/categories');
+const imagesRoutes = require('./routes/images');
 const cors = require('cors');
 
 
@@ -14,6 +15,7 @@ app.use(express.json());
 // Use recipe routes
 app.use('/recipes', recipeRoutes);
 app.use('/categories', categoryRoutes);
+app.use('/images', imagesRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

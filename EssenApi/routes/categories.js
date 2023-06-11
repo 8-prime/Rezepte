@@ -3,6 +3,7 @@ const router = express.Router();
 const categoryController = require('../controllers/categories');
 
 
+
 router.use(express.json());
 
 // Get all recipes

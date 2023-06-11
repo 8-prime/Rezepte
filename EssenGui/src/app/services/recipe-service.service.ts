@@ -5,6 +5,8 @@ import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { response } from 'express';
 import { Category } from '../classes/category';
 import { Recipe } from '../classes/recipe';
+import { Image } from '../classes/image';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +15,7 @@ export class RecipeServiceService {
 
   recipe: BehaviorSubject<Recipe> = new BehaviorSubject( new Recipe("","",[], [],[]));
 
-  // baseUrl: string = 'http://localhost:3000';
-  baseUrl: string = 'https://rezepteexpress.onrender.com';
+  baseUrl: string = environment.API_URL;
 
   constructor(private http: HttpClient) { }
 
@@ -56,5 +57,10 @@ export class RecipeServiceService {
     console.log(password == 'demboys');
     
     return password == 'demboys';
+  }
+
+
+  getImage(query: string): Observable<Image>{
+    return this.http.get<Image>(`${this.baseUrl}/images/${query}`);
   }
 }

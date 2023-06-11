@@ -12,6 +12,7 @@ export class RecipeDetailComponent implements OnInit {
 
   recipe?: Recipe;
   loading: boolean = true;
+  imageUrl: string = '';
 
   constructor(private recipeService: RecipeServiceService, private route: ActivatedRoute) { }
 
@@ -23,11 +24,21 @@ export class RecipeDetailComponent implements OnInit {
 
         if(this.recipe._id != params['id']){
           this.recipeService.getRecipebyId(params['id']).subscribe( recipe => {
+
+            this.recipeService.getImage(recipe.name).subscribe(resp => {
+              this.imageUrl = resp.urls.regular;
+            });
+
             this.recipe = recipe;
             this.loading = false;
           });
         }else{
+          this.recipeService.getImage(rec.name).subscribe(resp => {
+            this.imageUrl = resp.urls.regular;
+          });
+          
           this.loading = false;
+
         }
       });
       

@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^16.0.1",
     "@angular/platform-browser-dynamic": "^16.0.1",
     "@angular/router": "^16.0.1",
+    "angular-blurhash": "^0.0.2",
     "angular-cli-ghpages": "^1.0.6",
     "assert": "^2.0.0",
     "crypto-browserify": "^3.12.0",

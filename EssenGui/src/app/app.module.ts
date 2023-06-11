@@ -21,7 +21,6 @@ import { CategoryAddComponent } from './pages/category-add/category-add.componen
 import { CategoryEditDialogComponent } from './components/category-edit-dialog/category-edit-dialog.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
