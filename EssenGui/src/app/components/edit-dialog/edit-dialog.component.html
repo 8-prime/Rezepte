@@ -1,11 +1,10 @@
-<div class="fixed z-10 h-screen p-20 inset-0 bg-transparent ">
+<div class="fixed z-10 h-screen p-2 md:p-10 inset-0 bg-transparent w-screen">
   <!-- background -->
   <div class="fixed inset-0 transition-opacity">
     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
   </div>
 
-  <div
-    class="h-full flex flex-col gap-4 justify-center items-center flex-wrap bg-white rounded-lg transform transition-all p-10">
+  <div class="h-full flex flex-col gap-4 justify-center items-center flex-wrap bg-white rounded-lg transform transition-all p-2 md:p-10">
     <div class="overflow-y-auto w-full overflow-x-hidden h-5/6 scrollbar-thin scrollbar-thumb-neutral-600 hover:scrollbar-thumb-black scrollbar-track-gray-200 scrollbar-thumb-rounded-full scrollbar-thumb-grab scrollbar-thumb-grabbing">
       <form class="m-2 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 min-w-[300px]" (ngSubmit)="onSubmit()">
         <div class="mb-4">
@@ -22,7 +21,7 @@
           </label>
           <div class="flex flex-col space-y-2">
             <div class="flex space-x-2">
-              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2 max-h-24"
                 type="button" (click)="addIngredient()">
                 Add ingredient
               </button>
@@ -33,7 +32,7 @@
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Enter ingredient name" [ngModelOptions]="{ standalone: true }"
                 [(ngModel)]="recipe.ingredients[i]" required>
-              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2 max-h-24"
                 type="button" (click)="removeIngredient(i)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -53,7 +52,7 @@
           </label>
           <div class="flex flex-col space-y-2">
             <div class="flex space-x-2">
-              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2max-h-24"
                 type="button" (click)="addInstruction()">
                 Add instruction
               </button>
@@ -66,7 +65,7 @@
                 [(ngModel)]="recipe.instructions[i]" required>
               </textarea>
               <button
-                class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2 justify-evenly items-center"
+                class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2 justify-evenly items-center max-h-24"
                 type="button" (click)="removeInstruction(i)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -87,7 +86,7 @@
           </label>
           <div class="flex flex-col space-y-2">
             <div class="flex space-x-2">
-              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2 max-h-24"
                 type="button" (click)="addCategory()">
                 Add category
               </button>
@@ -97,7 +96,7 @@
               <select [(ngModel)]="recipe.categoryIds[i]" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
               </select>
-              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+              <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2 max-h-24"
                 type="button" (click)="removeCategory(i)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -116,7 +115,7 @@
 
         </div>
         <div class="flex justify-end">
-          <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+          <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2 max-h-24"
             type="submit">
             {{actionButtonText}}
           </button>
@@ -124,7 +123,7 @@
       </form>
     </div>
     <div class="w-full flex justify-end">
-      <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+      <button class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2 max-h-24"
         (click)="closeModal()">Close</button>
     </div>
   </div>
