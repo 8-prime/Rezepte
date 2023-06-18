@@ -8,7 +8,7 @@ The the Website is built with Angular and Tailwind hosted via Github Pages
  
 Backend: 
 The backend is a Rest-Api build using express in node.js hosted via [Render](https://render.com/)
-Deploy with `ng deploy --base-href=/Rezepte/`
+Deploy with `ng deploy --base-href=/Rezepte/ --env=prod`
 
 Persistence:
 The persitence layer uses Mongo Db hosted via [Atlas](https://www.mongodb.com/atlas/database)
