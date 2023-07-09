@@ -11,3 +11,11 @@
 ul li:last-child div:before{
     content:none;
    } */
+
+
+.lineDiv{
+    border-right: 1px solid rgb(163 163 163);
+    transform: translateX(-50%);
+    min-height: 20px;
+    height: 100%;
+}
