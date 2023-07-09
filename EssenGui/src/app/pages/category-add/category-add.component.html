@@ -20,7 +20,7 @@
         </button>
     </div>
     <div class="flex justify-center overflow-x-scroll w-full m-x-4 scrollbar-thin scrollbar-thumb-neutral-600 hover:scrollbar-thumb-black scrollbar-track-gray-200 scrollbar-thumb-rounded-full scrollbar-thumb-grab scrollbar-thumb-grabbing">
-        <div class="m-10 w-full md:w-3/4 lg:w-1/2 shadow-xl rounded-lg overflow-hidden">
+        <div class="m-10 w-full md:w-3/4 lg:w-1/2 shadow-xl rounded-lg">
             <table [ariaDescription]="'Table with all Recipes'" class="w-full">
                 <thead>
                     <tr>
@@ -44,10 +44,10 @@
                         <td class="px-5">{{category.name}}</td>
                         <td class="px-5">
                             <button
-                                class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+                                class="bg-[#dceccb]  text-neutral-900 font-bold py-2 px-4 rounded-sm flex gap-2"
                                 (click)="edit(category)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                <svg class="stroke-neutral-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none"  stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
                                     <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
                                     <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
@@ -57,10 +57,10 @@
                         </td>
                         <td class="px-5">
                             <button
-                                class="bg-[#050708] hover:bg-neutral-800 text-white font-bold py-2 px-4 rounded-full flex gap-2"
+                                class="bg-[#74ACDC] text-neutral-900 font-bold py-2 px-4 rounded-sm flex gap-2"
                                 (click)="delete(category)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                <svg class="stroke-neutral-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none"  stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
                                     <polyline points="3 6 5 6 21 6"></polyline>
                                     <path
